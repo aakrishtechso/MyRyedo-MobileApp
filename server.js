@@ -18,16 +18,24 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+const allowedOrigins = [
+  'https://myryedo.com',
+  'https://www.myryedo.com',
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'https://localhost',
+  'capacitor://localhost',
+  'http://localhost'
+];
+
 app.use(cors({
-  origin: [
-    'https://myryedo.com',
-    'https://www.myryedo.com',
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'https://localhost',
-    'capacitor://localhost',
-    'http://localhost'
-  ],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS origin not allowed: ${origin}`));
+    }
+  },
   credentials: true
 }));
 

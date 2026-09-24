@@ -1,0 +1,6 @@
+{
+  "name": "MyRyedo",
+  "description": "Modern premium peer-to-peer vehicle rental marketplace for verified cars, bikes, EVs, and scooters.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
